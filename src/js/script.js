@@ -40,13 +40,16 @@ const favoriteBooks = [];
 
 function initActions() {
 
-  const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę*/
+  const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę książek*/
   const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
 
   for (let image of images) {
 
-    image.addEventListener('dblclick', function (event) { /*dodaję EventListener do każdego obrazka osobno, a nie do listy*/
+    elementOfList.addEventListener('dblclick', function (event) {
       event.preventDefault();
+
+      const clickedElement = event.target.offsetParent;
+
       // image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
       const dataId = image.getAttribute('data-id'); /*pobieram identyfikator*/
       // favoriteBooks.push(dataId);
