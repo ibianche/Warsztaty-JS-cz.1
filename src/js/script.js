@@ -13,10 +13,8 @@ const templates = {
 };
 
 
-
 render();
 initActions();
-
 
 
 function render() {               /*wzorowałam się metodą Product.renderInMenu*/
@@ -38,27 +36,33 @@ function render() {               /*wzorowałam się metodą Product.renderInMen
 }
 
 
-
-const favoriteBooks =[];
+const favoriteBooks = [];
 
 function initActions() {
 
   const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę*/
   const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
 
-  for(let image of images) {
+  for (let image of images) {
 
     image.addEventListener('dblclick', function (event) { /*dodaję EventListener do każdego obrazka osobno, a nie do listy*/
       event.preventDefault();
-      image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
+      // image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
       const dataId = image.getAttribute('data-id'); /*pobieram identyfikator*/
-      favoriteBooks.push(dataId);
+      // favoriteBooks.push(dataId);
+
+      if (favoriteBooks.includes(dataId)) { /*sprawdza czy ksiazka została już dodana do 'ulubionych' */
+        image.classList.remove('favorite');
+        favoriteBooks.pop(dataId);
+      } else {
+        image.classList.add('favorite');
+        favoriteBooks.push(dataId);
+      }
     });
   }
+
+
 }
-
-
-
 
 
 
