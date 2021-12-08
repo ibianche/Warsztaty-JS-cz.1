@@ -4,7 +4,7 @@ const select = {
   },
   containerOf: {
     list: '.books-list',
-    image: '.book___image'
+    image: '.book__image'
   },
 };
 
@@ -43,24 +43,20 @@ const favoriteBooks =[];
 
 function initActions() {
 
-  const elementOfList = document.querySelector(select.containerOf.list);
+  const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę*/
+  const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
 
-  elementOfList.addEventListener('dblclick', function (event) {
-    event.preventDefault();
+  for(let image of images) {
 
-    elementOfList.classList.add('favorite');
-
-    const dataId = document.querySelector(dataSource.books.id);
-
-    const favoriteBooks = dataId;
-
-
-  });
-
-
-
-
+    image.addEventListener('dblclick', function (event) { /*dodaję EventListener do każdego obrazka osobno, a nie do listy*/
+      event.preventDefault();
+      image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
+      const dataId = image.getAttribute('data-id'); /*pobieram identyfikator*/
+      favoriteBooks.push(dataId);
+    });
+  }
 }
+
 
 
 
