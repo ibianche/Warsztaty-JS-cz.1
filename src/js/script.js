@@ -4,7 +4,8 @@ const select = {
   },
   containerOf: {
     list: '.books-list',
-    image: '.book__image'
+    image: '.book__image',
+    filters: '.filters'
   },
 };
 
@@ -42,7 +43,7 @@ function initActions() {
 
   const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę książek*/
   const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
-
+  const filters = document.querySelector(select.containerOf.filters);
 
   elementOfList.addEventListener('dblclick', function (event) {
     event.preventDefault();
@@ -62,7 +63,24 @@ function initActions() {
     }
   });
 
+
+  filters.addEventListener('dblclick',function (event) {
+    event.preventDefault();
+    const clickedElement = event.target.offsetParent;
+
+    if(clickedElement(tagName === INPUT && type === checkbox && name === filter)){
+      console.log(value);
+    }
+
+  });
+
+
+
 }
+
+const filters = [];
+
+
 
 
 
