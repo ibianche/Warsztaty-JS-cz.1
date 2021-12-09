@@ -64,11 +64,11 @@ function initActions() {
   });
 
 
-  filters.addEventListener('dblclick',function (event) {
+  filters.addEventListener('click',function (event) {
     event.preventDefault();
-    const clickedElement = event.target.offsetParent;
+    const clickedElement = event.target;
 
-    if(clickedElement(tagName === INPUT && type === checkbox && name === filter)){
+    if(clickedElement.tagName === INPUT && clickedElement.type === checkbox && clickedElement.name === filter){
       console.log(value);
     }
 
