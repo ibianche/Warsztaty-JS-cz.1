@@ -64,18 +64,24 @@ function initActions() {
   });
 
 
+
   filters.addEventListener('click',function (event) {
     event.preventDefault();
     const clickedElement = event.target;
 
-    if(clickedElement.tagName === INPUT && clickedElement.type === checkbox && clickedElement.name === filter){
-      console.log(value);
+    if(clickedElement.tagName === 'INPUT' && clickedElement.type === 'checkbox' && clickedElement.name === 'filter') {
+      console.log(clickedElement.value);
+
+
+      if (clickedElement === true) {  /*sprawdzam czy input jest zaznaczony */
+        filters.push(clickedElement.value); /*jezeli jest zaznaczony to dodaje value filtra do tablicy filters */
+      } else {
+        const indexEl = filters.indexOf(clickedElement.value); /*jesli nie jest zaznaczony to musimy go usunąc z tablicy, szukam indeks tego elementu*/
+        filters.splice(indexEl, 1); /*potem usuwamy*/
+
+      }
     }
-
   });
-
-
-
 }
 
 const filters = [];
