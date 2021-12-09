@@ -43,34 +43,26 @@ function initActions() {
   const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę książek*/
   const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
 
-  for (let image of images) {
 
-    elementOfList.addEventListener('dblclick', function (event) {
-      event.preventDefault();
+  elementOfList.addEventListener('dblclick', function (event) {
+    event.preventDefault();
 
-      const clickedElement = event.target.offsetParent;
+    const clickedElement = event.target.offsetParent;
 
-      // image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
-      const dataId = image.getAttribute('data-id'); /*pobieram identyfikator*/
-      // favoriteBooks.push(dataId);
+    // image.classList.add('favorite'); /*dodaję do klikniętego obrazka klasę favorite*/
+    const dataId = clickedElement.getAttribute('data-id'); /*pobieram identyfikator*/
+    // favoriteBooks.push(dataId);
 
-      if (favoriteBooks.includes(dataId)) { /*sprawdza czy ksiazka została już dodana do 'ulubionych' */
-        image.classList.remove('favorite');
-        favoriteBooks.pop(dataId);
-      } else {
-        image.classList.add('favorite');
-        favoriteBooks.push(dataId);
-      }
-    });
-  }
-
+    if (favoriteBooks.includes(dataId)) { /*sprawdza czy ksiazka została już dodana do 'ulubionych' */
+      clickedElement.classList.remove('favorite');
+      favoriteBooks.pop(dataId);
+    } else {
+      clickedElement.classList.add('favorite');
+      favoriteBooks.push(dataId);
+    }
+  });
 
 }
-
-
-
-
-
 
 
 
