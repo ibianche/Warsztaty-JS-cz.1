@@ -73,9 +73,9 @@ function initActions() {
       console.log(clickedElement.value);
 
 
-      if (clickedElement === true) {  /*sprawdzam czy input jest zaznaczony */
+      if (clickedElement.checked === true) {  /*sprawdzam czy input jest zaznaczony */
         filters.push(clickedElement.value); /*jezeli jest zaznaczony to dodaje value filtra do tablicy filters */
-      } else {
+      }else {
         const indexEl = filters.indexOf(clickedElement.value); /*jesli nie jest zaznaczony to musimy go usunąc z tablicy, szukam indeks tego elementu*/
         filters.splice(indexEl, 1); /*potem usuwamy*/
 
