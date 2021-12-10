@@ -77,18 +77,16 @@ function initActions() {
     if (clickedElement.tagName === 'INPUT' && clickedElement.type === 'checkbox' && clickedElement.name === 'filter') {
       console.log(clickedElement.value);
 
-
       if (clickedElement.checked === true) {  /*sprawdzam czy input jest zaznaczony */
         filtersElem.push(clickedElement.value); /*jezeli jest zaznaczony to dodaje value filtra do tablicy filters */
       } else {
         const indexEl = filtersElem.indexOf(clickedElement.value); /*jesli nie jest zaznaczony to musimy go usunąc z tablicy, szukam indeks tego elementu*/
         filtersElem.splice(indexEl, 1); /*potem usuwamy*/
-
       }
     }
+    filterBooks();
   });
 
-  filterBooks();
 }
 
 
