@@ -14,6 +14,8 @@ const templates = {
 };
 
 
+const filtersElem = [];
+
 render();
 initActions();
 
@@ -39,7 +41,9 @@ function render() {               /*wzorowałam się metodą Product.renderInMen
 // const images = document.querySelectorAll(select.containerOf.image);
 
 const favoriteBooks = [];
-const filtersElem = [];
+
+
+// const filtersElem = [];
 
 function initActions() {
 
@@ -100,7 +104,7 @@ function filterBooks() {
       }
     }
 
-    const bookId = document.querySelector('.book__image[data-id="id-of-the-book-here"]');
+    const bookId = document.querySelector('.book__image[data-id="' + book.id +'"]');
 
     if (shouldBeHidden === true) {
       bookId.classList.add('hidden');
