@@ -38,11 +38,12 @@ function render() {               /*wzorowałam się metodą Product.renderInMen
 
 
 const favoriteBooks = [];
+const filtersElem = [];
 
 function initActions() {
 
   const elementOfList = document.querySelector(select.containerOf.list); /*szukam listę książek*/
-  const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
+  // const images = elementOfList.querySelectorAll(select.containerOf.image); /*wyszukuję obrazki w tej liście*/
   const filters = document.querySelector(select.containerOf.filters);
 
   elementOfList.addEventListener('dblclick', function (event) {
@@ -66,7 +67,7 @@ function initActions() {
 
 
   filters.addEventListener('click',function (event) {
-    event.preventDefault();
+    // event.preventDefault();
     const clickedElement = event.target;
 
     if(clickedElement.tagName === 'INPUT' && clickedElement.type === 'checkbox' && clickedElement.name === 'filter') {
@@ -74,20 +75,34 @@ function initActions() {
 
 
       if (clickedElement.checked === true) {  /*sprawdzam czy input jest zaznaczony */
-        filters.push(clickedElement.value); /*jezeli jest zaznaczony to dodaje value filtra do tablicy filters */
+        filtersElem.push(clickedElement.value); /*jezeli jest zaznaczony to dodaje value filtra do tablicy filters */
       }else {
-        const indexEl = filters.indexOf(clickedElement.value); /*jesli nie jest zaznaczony to musimy go usunąc z tablicy, szukam indeks tego elementu*/
-        filters.splice(indexEl, 1); /*potem usuwamy*/
+        const indexEl = filtersElem.indexOf(clickedElement.value); /*jesli nie jest zaznaczony to musimy go usunąc z tablicy, szukam indeks tego elementu*/
+        filtersElem.splice(indexEl, 1); /*potem usuwamy*/
 
       }
     }
   });
 }
 
-const filters = [];
 
 
 
+// function filterBooks(){
+//
+// for(let book of dataSource.books){
+//
+//   let shouldBeHidden = false;
+//
+//   for(let filter of filters){
+//
+//
+//   }
+//
+// }
+//
+//
+// }
 
 
 
