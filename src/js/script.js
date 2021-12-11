@@ -31,13 +31,14 @@ function render() {               /*wzorowałam się metodą Product.renderInMen
       image: book.image,
     };
 
+    const ratingBgc = determineRatingBgc(bookInfo.rating);
+    const ratingWidth = ratingBgc * 10;
     const generatedHTML = templates.book(bookInfo);
     const newElement = utils.createDOMFromHTML(generatedHTML);
     const listContainer = document.querySelector(select.containerOf.list);
     listContainer.appendChild(newElement);
 
-    const ratingBgc = determineRatingBgc(rating);
-    const ratingWidth = ratingBgc * 10;
+
   }
 }
 
@@ -119,11 +120,11 @@ function determineRatingBgc(rating) {
 
   if (rating < 6){
     let background1 = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
-  }else if (rating > 6 && <= 8){
+  }else if (rating > 6 && rating <= 8){
     let background2 = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
-  }else if (rating  > 8 && <= 9){
+  }else if (rating  > 8 && rating <= 9){
     let background3 = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
-  }else (rating > 9){
+  }else if(rating > 9){
     let background4 = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
   }
 
