@@ -32,7 +32,9 @@ function render() {               /*wzorowałam się metodą Product.renderInMen
     };
 
     const ratingBgc = determineRatingBgc(bookInfo.rating);
-    const ratingWidth = ratingBgc * 10;
+    bookInfo.ratingBgc = ratingBgc;
+    const ratingWidth = bookInfo.rating * 10;
+    bookInfo.ratingWidth = ratingWidth;
     const generatedHTML = templates.book(bookInfo);
     const newElement = utils.createDOMFromHTML(generatedHTML);
     const listContainer = document.querySelector(select.containerOf.list);
@@ -117,16 +119,16 @@ function filterBooks() {
 
 
 function determineRatingBgc(rating) {
-
+  let background = [];
   if (rating < 6){
-    let background1 = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
+    let background = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
   }else if (rating > 6 && rating <= 8){
-    let background2 = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
+    let background = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
   }else if (rating  > 8 && rating <= 9){
-    let background3 = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
+    let background = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
   }else if(rating > 9){
-    let background4 = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
-  }
+    let background = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
+  } return background;
 
 
 
